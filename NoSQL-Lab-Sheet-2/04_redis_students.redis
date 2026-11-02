@@ -1,0 +1,22 @@
+# Q4: Redis key-value student information system
+# Open redis-cli and enter these commands one by one.
+
+# 1-2. Store at least five students (student ID is the key)
+SET student:1 "Aanya"
+SET student:2 "Riya"
+SET student:3 "Rahul"
+SET student:4 "Priya"
+SET student:5 "Aman"
+
+# 3. Retrieve a student using the key
+GET student:3
+
+# 4. Update a student's value
+SET student:3 "Rahul Sharma"
+GET student:3
+
+# 5. Delete a student
+DEL student:5
+
+# 6. Display all student keys
+KEYS student:*

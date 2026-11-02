@@ -1,0 +1,46 @@
+# Q6: HBase Students table
+# Run these commands inside HBase Shell.
+# Column families: personal and academic
+
+create 'Students', 'personal', 'academic'
+
+# Insert at least five records
+put 'Students', '1', 'personal:name', 'Aanya'
+put 'Students', '1', 'personal:course', 'BCA'
+put 'Students', '1', 'academic:semester', '5'
+put 'Students', '1', 'academic:marks', '91.5'
+
+put 'Students', '2', 'personal:name', 'Riya'
+put 'Students', '2', 'personal:course', 'BCA'
+put 'Students', '2', 'academic:semester', '4'
+put 'Students', '2', 'academic:marks', '86'
+
+put 'Students', '3', 'personal:name', 'Rahul'
+put 'Students', '3', 'personal:course', 'BSc IT'
+put 'Students', '3', 'academic:semester', '3'
+put 'Students', '3', 'academic:marks', '78.5'
+
+put 'Students', '4', 'personal:name', 'Priya'
+put 'Students', '4', 'personal:course', 'BCA'
+put 'Students', '4', 'academic:semester', '5'
+put 'Students', '4', 'academic:marks', '89'
+
+put 'Students', '5', 'personal:name', 'Aman'
+put 'Students', '5', 'personal:course', 'BSc IT'
+put 'Students', '5', 'academic:semester', '2'
+put 'Students', '5', 'academic:marks', '74'
+
+# Retrieve a particular student's details
+get 'Students', '3'
+
+# Update student information (a new cell value/version)
+put 'Students', '3', 'academic:marks', '82'
+
+# Display all records
+scan 'Students'
+
+# Delete a student record
+deleteall 'Students', '5'
+
+# Verify
+scan 'Students'
