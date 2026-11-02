@@ -1,0 +1,18 @@
+# Q9. Row-key design for a large-scale application
+# Sequential keys can hotspot a single region. A salt prefix distributes writes.
+# Example salt buckets 00-03, chosen here from a simple hash-like bucket value.
+
+create 'LargeStudent', 'info', {SPLITS => ['01', '02', '03']}
+
+# Row key format: salt|studentId
+put 'LargeStudent', '00|S1001', 'info:name', 'Aanya'
+put 'LargeStudent', '01|S1002', 'info:name', 'Riya'
+put 'LargeStudent', '02|S1003', 'info:name', 'Rahul'
+put 'LargeStudent', '03|S1004', 'info:name', 'Priya'
+put 'LargeStudent', '00|S1005', 'info:name', 'Aman'
+
+scan 'LargeStudent'
+
+# The salt prefix spreads writes across key ranges/regions.
+# A lookup by student ID must know or calculate the salt.
+# Choose a row key based on expected read patterns; avoid unbounded scans.

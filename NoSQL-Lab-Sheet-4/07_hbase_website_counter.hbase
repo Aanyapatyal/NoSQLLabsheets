@@ -1,0 +1,15 @@
+# Q7. Website page-view counters
+create 'WebsiteCounter', 'views'
+
+# Atomic increment operations
+incr 'WebsiteCounter', 'page:home', 'views:count', 1
+incr 'WebsiteCounter', 'page:home', 'views:count', 1
+incr 'WebsiteCounter', 'page:products', 'views:count', 1
+incr 'WebsiteCounter', 'page:contact', 'views:count', 1
+incr 'WebsiteCounter', 'page:products', 'views:count', 1
+
+# Display counter values
+get 'WebsiteCounter', 'page:home'
+get 'WebsiteCounter', 'page:products'
+get 'WebsiteCounter', 'page:contact'
+scan 'WebsiteCounter'

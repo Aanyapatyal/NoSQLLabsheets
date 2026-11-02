@@ -1,0 +1,36 @@
+# Q1. HBase Student table with personal and academic column families
+# Run in HBase Shell
+
+create 'Student', 'personal', 'academic'
+
+# Insert five student records
+put 'Student', 'S001', 'personal:name', 'Aanya'
+put 'Student', 'S001', 'personal:department', 'BCA'
+put 'Student', 'S001', 'academic:semester', '5'
+put 'Student', 'S001', 'academic:cgpa', '9.2'
+
+put 'Student', 'S002', 'personal:name', 'Riya'
+put 'Student', 'S002', 'personal:department', 'BCA'
+put 'Student', 'S002', 'academic:semester', '4'
+put 'Student', 'S002', 'academic:cgpa', '8.8'
+
+put 'Student', 'S003', 'personal:name', 'Rahul'
+put 'Student', 'S003', 'personal:department', 'BSc IT'
+put 'Student', 'S003', 'academic:semester', '3'
+put 'Student', 'S003', 'academic:cgpa', '8.1'
+
+put 'Student', 'S004', 'personal:name', 'Priya'
+put 'Student', 'S004', 'personal:department', 'BCA'
+put 'Student', 'S004', 'academic:semester', '5'
+put 'Student', 'S004', 'academic:cgpa', '9.0'
+
+put 'Student', 'S005', 'personal:name', 'Aman'
+put 'Student', 'S005', 'personal:department', 'BSc IT'
+put 'Student', 'S005', 'academic:semester', '2'
+put 'Student', 'S005', 'academic:cgpa', '7.9'
+
+# Display all records
+scan 'Student'
+
+# Display one student
+get 'Student', 'S001'

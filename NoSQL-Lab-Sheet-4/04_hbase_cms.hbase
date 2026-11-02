@@ -1,0 +1,30 @@
+# Q4. HBase Content Management System
+create 'CMS', 'content', 'author', 'metadata'
+
+# Insert content record
+put 'CMS', 'C001', 'content:title', 'MongoDB Introduction'
+put 'CMS', 'C001', 'content:body', 'Introduction to document databases'
+put 'CMS', 'C001', 'author:name', 'Aanya'
+put 'CMS', 'C001', 'metadata:category', 'Technology'
+put 'CMS', 'C001', 'metadata:status', 'draft'
+
+# Update content and status
+put 'CMS', 'C001', 'content:body', 'Updated MongoDB article content'
+put 'CMS', 'C001', 'metadata:status', 'published'
+
+# Retrieve record
+get 'CMS', 'C001'
+
+# Insert another record
+put 'CMS', 'C002', 'content:title', 'Cassandra Basics'
+put 'CMS', 'C002', 'author:name', 'Riya'
+put 'CMS', 'C002', 'metadata:category', 'Database'
+put 'CMS', 'C002', 'metadata:status', 'published'
+
+# Display all content
+scan 'CMS'
+
+# Delete a specific cell and then a row
+delete 'CMS', 'C001', 'metadata:status'
+deleteall 'CMS', 'C002'
+scan 'CMS'

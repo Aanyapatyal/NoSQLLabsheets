@@ -1,0 +1,29 @@
+# Q5. Blogging Platform in HBase
+create 'Blog', 'blog', 'author', 'comments'
+
+# Blog 1
+put 'Blog', 'B001', 'blog:title', 'Learning HBase'
+put 'Blog', 'B001', 'blog:category', 'Database'
+put 'Blog', 'B001', 'author:name', 'Aanya'
+put 'Blog', 'B001', 'author:id', 'A01'
+put 'Blog', 'B001', 'comments:c001', 'Very useful post'
+
+# Blog 2
+put 'Blog', 'B002', 'blog:title', 'Introduction to Cassandra'
+put 'Blog', 'B002', 'blog:category', 'NoSQL'
+put 'Blog', 'B002', 'author:name', 'Riya'
+put 'Blog', 'B002', 'author:id', 'A02'
+put 'Blog', 'B002', 'comments:c001', 'Nice explanation'
+
+# Blog 3
+put 'Blog', 'B003', 'blog:title', 'Graph Databases'
+put 'Blog', 'B003', 'blog:category', 'NoSQL'
+put 'Blog', 'B003', 'author:name', 'Rahul'
+put 'Blog', 'B003', 'author:id', 'A03'
+put 'Blog', 'B003', 'comments:c001', 'Interesting topic'
+
+# Retrieve a particular blog by row key
+get 'Blog', 'B002'
+
+# Display all blogs
+scan 'Blog'

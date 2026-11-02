@@ -1,0 +1,30 @@
+# Q2. Employee CRUD in HBase Shell
+create 'Employee', 'personal', 'job'
+
+# CREATE / PUT
+put 'Employee', 'E101', 'personal:name', 'Aanya'
+put 'Employee', 'E101', 'personal:city', 'Haridwar'
+put 'Employee', 'E101', 'job:department', 'IT'
+put 'Employee', 'E101', 'job:salary', '30000'
+
+put 'Employee', 'E102', 'personal:name', 'Riya'
+put 'Employee', 'E102', 'job:department', 'HR'
+put 'Employee', 'E102', 'job:salary', '28000'
+
+# READ / GET
+get 'Employee', 'E101'
+
+# SCAN
+scan 'Employee'
+
+# UPDATE: put the same row/column with a new value
+put 'Employee', 'E101', 'job:salary', '35000'
+get 'Employee', 'E101'
+
+# DELETE one cell
+delete 'Employee', 'E102', 'job:salary'
+get 'Employee', 'E102'
+
+# DELETE entire row
+deleteall 'Employee', 'E102'
+scan 'Employee'

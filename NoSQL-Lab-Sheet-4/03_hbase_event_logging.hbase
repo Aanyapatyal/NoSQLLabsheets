@@ -1,0 +1,24 @@
+# Q3. HBase Event Logging System
+create 'EventLog', 'event', 'user', 'details'
+
+# Row key format: event timestamp + event ID (example values)
+put 'EventLog', '20261030T090000Z_EVT001', 'event:type', 'login'
+put 'EventLog', '20261030T090000Z_EVT001', 'event:status', 'success'
+put 'EventLog', '20261030T090000Z_EVT001', 'user:user_id', 'U001'
+put 'EventLog', '20261030T090000Z_EVT001', 'details:ip', '192.0.2.10'
+
+put 'EventLog', '20261030T090500Z_EVT002', 'event:type', 'failed-login'
+put 'EventLog', '20261030T090500Z_EVT002', 'event:status', 'failed'
+put 'EventLog', '20261030T090500Z_EVT002', 'user:user_id', 'U001'
+put 'EventLog', '20261030T090500Z_EVT002', 'details:ip', '192.0.2.10'
+
+put 'EventLog', '20261030T091000Z_EVT003', 'event:type', 'file-upload'
+put 'EventLog', '20261030T091000Z_EVT003', 'event:status', 'success'
+put 'EventLog', '20261030T091000Z_EVT003', 'user:user_id', 'U002'
+put 'EventLog', '20261030T091000Z_EVT003', 'details:file', 'report.pdf'
+
+# Retrieve by exact row key
+get 'EventLog', '20261030T090000Z_EVT001'
+
+# Display events
+scan 'EventLog'

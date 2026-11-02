@@ -1,0 +1,26 @@
+# Q6. Demonstrate column families and qualifiers
+# A table has column families profile and results.
+# Qualifiers are flexible columns within each family.
+
+create 'ColumnDemo', 'profile', 'results'
+
+put 'ColumnDemo', 'ST01', 'profile:name', 'Aanya'
+put 'ColumnDemo', 'ST01', 'profile:city', 'Haridwar'
+put 'ColumnDemo', 'ST01', 'profile:email', 'aanya@example.com'
+put 'ColumnDemo', 'ST01', 'results:dbms', '90'
+put 'ColumnDemo', 'ST01', 'results:java', '88'
+
+# Another row can have different qualifiers
+put 'ColumnDemo', 'ST02', 'profile:name', 'Riya'
+put 'ColumnDemo', 'ST02', 'profile:city', 'Delhi'
+put 'ColumnDemo', 'ST02', 'results:python', '95'
+
+# Read rows
+get 'ColumnDemo', 'ST01'
+get 'ColumnDemo', 'ST02'
+scan 'ColumnDemo'
+
+# Explain:
+# profile and results are column families created at table definition time.
+# name, city, email, dbms, java and python are column qualifiers.
+# A row need not contain every qualifier; sparse columns are supported.

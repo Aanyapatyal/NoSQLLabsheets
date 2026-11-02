@@ -1,0 +1,21 @@
+# Q8. Expiring user sessions with TTL
+# TTL is in seconds. 3600 seconds = 1 hour.
+create 'UserSessions', {NAME => 'session', TTL => 3600}, {NAME => 'user'}
+
+# Insert session information
+put 'UserSessions', 'SESSION001', 'session:user_id', 'U001'
+put 'UserSessions', 'SESSION001', 'session:status', 'active'
+put 'UserSessions', 'SESSION001', 'session:login_time', '2026-10-30T09:00:00'
+
+put 'UserSessions', 'SESSION002', 'session:user_id', 'U002'
+put 'UserSessions', 'SESSION002', 'session:status', 'active'
+put 'UserSessions', 'SESSION002', 'session:login_time', '2026-10-30T09:15:00'
+
+# Read sessions
+scan 'UserSessions'
+
+# Verify column-family TTL configuration
+describe 'UserSessions'
+
+# TTL expiration is based on cell timestamps. Expired cells are hidden from reads
+# after expiry; physical cleanup generally occurs during compaction, not immediately.
